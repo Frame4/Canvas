@@ -1,4 +1,4 @@
-package PaintersStrategy;
+package PainterStrategies;
 
 public interface PaintingStrategy {
     void executePainting();

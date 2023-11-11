@@ -1,4 +1,4 @@
-package Patterns;
+package PainterFactories;
 
 import Painters.Painter;
 

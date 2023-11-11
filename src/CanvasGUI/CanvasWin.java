@@ -2,69 +2,69 @@ package CanvasGUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 
 public class CanvasWin extends JFrame {
 
-    private List<Point> points;
-
-    public DibujarFiguras() {
-        super("Dibujar Figuras");
-
-        points = new ArrayList<>();
-
-        // Configurar el frame
+    public CanvasWin() {
+        setTitle("Arte Abstracto");
+        setSize(650, 650);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
 
-        // Crear el canvas y agregarlo al frame
         Canvas canvas = new Canvas();
-        canvas.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                points.clear();
-                points.add(e.getPoint());
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                points.add(e.getPoint());
-                repaint();
-            }
-        });
-        canvas.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                points.add(e.getPoint());
-                repaint();
-            }
-        });
-
         add(canvas);
 
-        // Mostrar el frame
-        setLocationRelativeTo(null);
-        setVisible(true);
+        setLocationRelativeTo(null); // Centrar la ventana en la pantalla
     }
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    private static class Canvas extends JPanel {
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
 
-        // Dibujar las líneas
-        if (points.size() > 1) {
-            for (int i = 0; i < points.size() - 1; i++) {
-                Point p1 = points.get(i);
-                Point p2 = points.get(i + 1);
-                g.drawLine(p1.x, p1.y, p2.x, p2.y);
-            }
+            Graphics2D g2d = (Graphics2D) g;
+
+            // Dibujar un rectángulo azul
+            g2d.setColor(new Color(0, 255, 0, 100));
+
+            Rectangle stripe = new Rectangle(0,50,1000,5);
+            g2d.fill(stripe);
+
+            AffineTransform rotation = AffineTransform.getRotateInstance(Math.toRadians(45), 0 + 1000 / 2.0, 0 + 50 / 2.0);
+            Shape rotatedRectangle = rotation.createTransformedShape(stripe);
+
+            g2d.draw(rotatedRectangle);
+
+
+
+            // Dibujar un círculo verde
+            g2d.setColor(new Color(0, 153, 0, 20));
+            Ellipse2D dot = new Ellipse2D.Double(200, 50, 200, 200);
+            g2d.fill(dot);
+
+            // Dibujar un triángulo rojo
+            g2d.setColor(new Color(0, 153, 123, 20));
+            int[] xPoints = {350, 300, 400};
+            int[] yPoints = {50, 150, 150};
+            Polygon polygon = new Polygon(xPoints, yPoints, 3);
+            g2d.fill(polygon);
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new DibujarFiguras());
+
+    public void PaintPolly(){
+        
     }
+    public void PaintStripe(){
+
+    }
+    public void PaintDot(){
+
+    }
+
+
+
 }

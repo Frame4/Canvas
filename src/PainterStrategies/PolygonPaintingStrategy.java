@@ -1,4 +1,4 @@
-package PaintersStrategy;
+package PainterStrategies;
 
 public class PolygonPaintingStrategy implements PaintingStrategy{
     @Override

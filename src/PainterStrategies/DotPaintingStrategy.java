@@ -1,4 +1,4 @@
-package PaintersStrategy;
+package PainterStrategies;
 
 public class DotPaintingStrategy implements PaintingStrategy{
     @Override
