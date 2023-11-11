@@ -1,8 +1,8 @@
-package ObserbablePainters;
+package PaintingPatterns;
 
 import Painters.Painter;
 import java.util.List;
-
+//implementación observer
 public class Painting {
     private List<Painter> painters;
     private int currentPainterIndex;
@@ -12,19 +12,19 @@ public class Painting {
         this.currentPainterIndex = 0;
     }
 
-    public void addObserver(Painter observer) {
-        painters.add(observer);
+    public void addObserver(Painter painter) {
+        painters.add(painter);
     }
 
-    public void removeObserver(Painter observer) {
-        painters.remove(observer);
+    public void removeObserver(Painter painter) {
+        painters.remove(painter);
     }
 
     public void notifyObservers() {
         Painter currentPainter = painters.get(currentPainterIndex);
-        // Notificar a los observadores sobre la posición, tamaño y color utilizados
-        for (Painter observer : painters) {
-            observer.update(currentPainter.getPosition(), currentPainter.getSize(), currentPainter.getColor());
+        // Notificar a los observadores sobre la posición, tamaño, color y lados utilizados
+        for (Painter painters : painters) {
+            painters.update(currentPainter.getPosition(), currentPainter.getSize(), currentPainter.getColor());
         }
     }
 
