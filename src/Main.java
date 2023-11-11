@@ -25,6 +25,8 @@ public class Main {
 
         while(iterator.hasNext()){
             Painter painter = iterator.next();
+
+
         }
 
         SwingUtilities.invokeLater(() -> {

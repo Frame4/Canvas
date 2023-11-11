@@ -36,6 +36,11 @@ public class DotPainter implements Painter {
         this.size = size;
     }
 
+    @Override
+    public int getSides() {
+        return 1;
+    }
+
     public String getColor() {
         return color;
     }

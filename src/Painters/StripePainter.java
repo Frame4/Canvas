@@ -46,6 +46,11 @@ public class StripePainter implements Painter {
         this.color = color;
     }
 
+    @Override
+    public int getSides() {
+        return 1;
+    }
+
     public void setPaintingStrategy(PaintingStrategy paintingStrategy) {
         this.paintingStrategy = paintingStrategy;
     }

@@ -7,6 +7,7 @@ public class PolygonPainter implements Painter {
     private int posX;
     private int posY;
     private int size;
+    private int sides;
     private String color;
     private PaintingStrategy paintingStrategy;
 
@@ -34,6 +35,15 @@ public class PolygonPainter implements Painter {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    @Override
+    public int getSides() {
+        return sides;
+    }
+
+    public void setSides(int sides) {
+        this.sides = sides;
     }
 
     @Override
